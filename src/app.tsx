@@ -23,7 +23,6 @@ type StatusResult<T> =
   | StatusFailure
   | StatusSuccess<T>;
 
-
 interface Resource<T> {
   read(): T;
   load(): void;
@@ -68,16 +67,15 @@ function createResource<T>(provider: () => Promise<T>): Resource<T> {
         };
       }, []);
 
-
       if (!status) {
         status = {
           status: 'pending',
           value: provider().then(
             (value) => {
-                status = {
-                  status: 'success',
-                  value,
-                };
+              status = {
+                status: 'success',
+                value,
+              };
             },
             (value) => {
               status = {
@@ -123,7 +121,7 @@ function createResource<T>(provider: () => Promise<T>): Resource<T> {
         listener();
       });
     },
-  }
+  };
 }
 
 const resource = createResource(() => new Promise((resolve) => {
@@ -135,7 +133,7 @@ const resource = createResource(() => new Promise((resolve) => {
 function Details() {
   const value = resource.read();
 
-  return <h1>Message: {value}</h1>
+  return <h1>Message: {value}</h1>;
 }
 
 // function App() {
@@ -159,12 +157,11 @@ function Status() {
   const status = resource.get();
 
   if (status) {
-    return <h1>Status: {status.status}</h1>
+    return <h1>Status: {status.status}</h1>;
   }
 
   return <h1>Not loaded</h1>;
 }
-
 
 // This component may indirectly contribute to the error.
 function Clock() {
@@ -172,21 +169,21 @@ function Clock() {
 
   useEffect(() => {
     const timeout = setInterval(() => {
-      setState((state) => state + 1);
-    }, 1000); 
+      setState((current) => current + 1);
+    }, 1050);
 
     return () => {
       clearTimeout(timeout);
     };
   }, []);
 
-  return <h1>Time: {state}</h1>
+  return <h1>Time: {state}</h1>;
 }
 
-export default function App() {
+export default function App(): VNode {
   return (
     <>
-      <button type="button" onClick={resource.load}>
+      <button type="button" onClick={() => resource.load()}>
         Reload (Click rapidly to reproduce error)
       </button>
       <Status />

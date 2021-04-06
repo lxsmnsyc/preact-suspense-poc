@@ -127,7 +127,7 @@ function createResource<T>(provider: () => Promise<T>): Resource<T> {
 const resource = createResource(() => new Promise((resolve) => {
   setTimeout(() => {
     resolve('Hello World');
-  }, 500);
+  }, 420);
 }));
 
 function Details() {
@@ -169,8 +169,8 @@ function Clock() {
 
   useEffect(() => {
     const timeout = setInterval(() => {
-      setState((current) => current + 1);
-    }, 1050);
+      setState((current) => current + 0.25);
+    }, 250); // Arbitrary timeout
 
     return () => {
       clearTimeout(timeout);

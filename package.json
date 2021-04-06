@@ -1,6 +1,6 @@
 {
-  "name": "preact-graph-state-vite",
-  "version": "1.6.1",
+  "name": "preact-suspense-poc",
+  "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

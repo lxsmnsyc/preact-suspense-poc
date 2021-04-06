@@ -140,30 +140,41 @@ function Details() {
 export default function App() {
   return (
     <>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Details />
-      </Suspense>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Details />
-      </Suspense>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Details />
-      </Suspense>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Details />
-      </Suspense>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Details />
-      </Suspense>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Details />
-      </Suspense>
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Details />
-      </Suspense>
       <button type="button" onClick={resource.load}>
         Reload (Click rapidly to reproduce error)
       </button>
+      <h1>Single Child</h1>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+      </Suspense>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+      </Suspense>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+      </Suspense>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+      </Suspense>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+      </Suspense>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+      </Suspense>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+      </Suspense>
+      <h1>Multi Child</h1>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Details />
+        <Details />
+        <Details />
+        <Details />
+        <Details />
+        <Details />
+        <Details />
+      </Suspense>
     </>
   );
 }
